@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="libraryTable">
+    <library name="Spring MVC-5.2.3.RELEASE" type="spring-mvc">
+      <properties version="5.2.3.RELEASE" />
+      <CLASSES>
+        <root url="jar://$USER_HOME$/Downloads/spring-webmvc-5.2.3.RELEASE.jar!/" />
+        <root url="jar://$USER_HOME$/Downloads/spring-web-5.2.3.RELEASE.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="spring-jdbc-5.3.8">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/Downloads/spring-jdbc-5.3.8.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+  </component>
+</project>

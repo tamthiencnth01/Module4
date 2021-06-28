@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function addNewCustomer() {
+            //lay du lieu
+            let fullName = $('#fullName').val();
+            let email = $('#email').val();
+            let password = $('#password').val();
+            let phone = $('#phone').val();
+            let address = $('#address').val();
+            let newCustomer = {
+                fullName: fullName,
+                email: email,
+                password: password,
+                phone: phone,
+                address: address
+            };
+            // goi ajax
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                data: JSON.stringify(newCustomer),
+                //tên API
+                url: "",
+                //xử lý khi thành công
+                success: successHandler
+
+            });
+            //chặn sự kiện mặc định của thẻ
+            event.preventDefault();
+        }
+
+        // function successHandler() {
+        //     $.ajax({
+        //         type: "GET",
+        //         //tên API
+        //         url: "/smartphones",
+        //         //xử lý khi thành công
+        //         success: function (data) {
+        //             // hien thi danh sach o day
+        //             let content = '    <tr>\n' +
+        //                 '        <td>Producer</td>\n' +
+        //                 '        <td>Model</td>\n' +
+        //                 '        <td>Price</td>\n' +
+        //                 '        <td>Delete</td>\n' +
+        //                 '    </tr>';
+        //             for (let i = 0; i < data.length; i++) {
+        //                 content += getSmartphone(data[i]);
+        //             }
+        //             document.getElementById('smartphoneList').innerHTML = content;
+        //         }
+        //     });
+        // }
+        //
+        // function getSmartphone(smartphone) {
+        //     return `<tr><td >${smartphone.producer}</td><td >${smartphone.model}</td><td >${smartphone.price}</td>` +
+        //         `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td></tr>`;
+        // }
+        //
+        // $(document).ready(function () {
+        //     //sư kiện nào thực hiện Ajax
+        //     $('.deleteSmartphone').click(function (event) {
+        //         //lay du lieu
+        //         let a = $(this);
+        //         let smartphoneId = a.attr("href");
+        //         // goi ajax
+        //         $.ajax({
+        //             type: "DELETE",
+        //             //tên API
+        //             url: `/smartphones/${smartphoneId}`,
+        //             //xử lý khi thành công
+        //             success: function (data) {
+        //                 a.parent().parent().remove();
+        //             }
+        //
+        //         });
+        //         //chặn sự kiện mặc định của thẻ
+        //         event.preventDefault();
+        //     });
+        // })
+    </script>
+</head>
+<body>
+<!--<th:block th:if="${message}">-->
+<!--    <p th:text="${message}"></p>-->
+<!--</th:block>-->
+<!--<div name="container" style="margin: auto; max-width: 80%">-->
+<!--    <form id="add-customer">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td>Producer:</td>-->
+<!--                <td><input type="text" id="fullName" placeholder="producer"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Model:</td>-->
+<!--                <td><input type="text" id="email" placeholder="model"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Price:</td>-->
+<!--                <td><input type="text" id="password" placeholder="price"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Price:</td>-->
+<!--                <td><input type="text" id="phone" placeholder="price"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Price:</td>-->
+<!--                <td><input type="text" id="address" placeholder="price"></td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td></td>-->
+<!--                <td><input type="submit" value="Add" onclick="addNewCustomer()"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+<!--&lt;!&ndash;    <form id="add-customer" th:action="@{/create}" th:object="${customer}" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="inputFullName4">Full Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" th:field="*{fullName}" class="form-control" id="inputFullName4" placeholder="Full Name">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="inputEmail4">Email</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="email" th:field="*{email}" class="form-control" id="inputEmail4" placeholder="Email">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="inputPass4">Password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="password" th:field="*{password}" class="form-control" id="inputPass4" placeholder="Password">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="inputRePass4">Re-password</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="password" class="form-control" id="inputRePass4" placeholder="RePass">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="inputPhone4">Phone</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" th:field="*{phone}" class="form-control" id="inputPhone4" placeholder="Phone">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="form-group col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <label for="inputAddress4">Adress</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="text" th:field="*{address}" class="form-control" id="inputAddress4" placeholder="Address">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="submit" class="btn btn-primary" onclick="addNewCustomer()">Create Customer</button>&ndash;&gt;-->
+<!--&lt;!&ndash;    </form>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1>Customers</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;    <table border="1" class="table">&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col">#</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col">Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col">Email</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col">Phone</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col">Address</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col"></th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th scope="col"></th>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        <th:block th:each="customer : ${customers}">&ndash;&gt;-->
+<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td scope="row" th:text="${customer.id}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td th:text="${customer.fullName}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td th:text="${customer.email}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td th:text="${customer.phone}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td th:text="${customer.address}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><a th:href="@{/edit-customer/__${customer.id}__ }">Edit</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <td><a th:href="@{/delete-customer/__${customer.id}__ }">Delete</a></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        </th:block>&ndash;&gt;-->
+<!--&lt;!&ndash;    </table>&ndash;&gt;-->
+<!--</div>-->
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

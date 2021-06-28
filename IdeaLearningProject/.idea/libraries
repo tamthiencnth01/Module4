@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="libraryTable">
+    <library name="spring-webmvc-5.2.3.RELEASE">
+      <CLASSES>
+        <root url="jar://$USER_HOME$/Downloads/spring-webmvc-5.2.3.RELEASE.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+  </component>
+</project>
